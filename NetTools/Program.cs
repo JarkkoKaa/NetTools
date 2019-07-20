@@ -10,12 +10,13 @@ namespace NetTools
             byte choice = 0;
             bool isByte;
 
+            GetHost gh = new GetHost();
             Console.WriteLine("\n+++++++++++++++\n" +
                     "NET TOOLS\n" +
                     "+++++++++++++++\n" +
                     "Author: Jarkko Kaartinen - 2019\n\n" +
                     $"Your machine: {Environment.MachineName}\n" +
-                    $"Your IP: {Dns.GetHostEntry(Dns.GetHostName())}\n");
+                    $"Your IP: {gh.GetHostIP()}\n");
 
             while (choice != 99)
             {
