@@ -22,7 +22,7 @@ namespace NetTools
                 DontFragment = true
             };
 
-            // buffer or 32 bytes data to be transmitted
+            // buffer of 32 bytes data to be transmitted
             string data = "11111111111111111111111111111111";
 
             byte[] buffer = Encoding.ASCII.GetBytes(data);
