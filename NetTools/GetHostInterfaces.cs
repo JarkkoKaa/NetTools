@@ -8,7 +8,7 @@ using System.Net.NetworkInformation;
 namespace NetTools
 {
     /// <summary>
-    /// Network interfaces and return IP addresses used
+    /// List of network interfaces
     /// </summary>
     class GetHostInterfaces
     {
@@ -45,15 +45,6 @@ namespace NetTools
                 }
                 Console.WriteLine("\n--------------------");
             }
-            /* this returns IP from DHCP which is connected to internet
-            // connectinf UDP socket to read local endpoint
-            using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
-            {
-                socket.Connect("8.8.8.8", 11111);
-                IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                return endPoint.Address;
-            }
-            */
         }
     }
 }
