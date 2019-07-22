@@ -9,17 +9,17 @@ namespace NetTools
     class GetHost
     {
         /// <summary>
-        /// Get host computers IP address
+        /// Get host IPv4 address
         /// </summary>
         /// <returns>IPAddress</returns>
-        public string GetHostIP()
+        public IPAddress GetHostIPv4()
         {
             // connectinf UDP socket to read local endpoint
             using (Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, 0))
             {
                 socket.Connect("8.8.8.8", 11111);
                 IPEndPoint endPoint = socket.LocalEndPoint as IPEndPoint;
-                return endPoint.Address.ToString();
+                return endPoint.Address;
             }
         }
     }

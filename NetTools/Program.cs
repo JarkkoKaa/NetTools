@@ -15,8 +15,7 @@ namespace NetTools
                     "NET TOOLS\n" +
                     "+++++++++++++++\n" +
                     "Author: Jarkko Kaartinen - 2019\n\n" +
-                    $"Your machine: {Environment.MachineName}\n" +
-                    $"Your IP: {gh.GetHostIP()}\n");
+                    $"Your machinename: {Environment.MachineName}\n");
 
             while (choice != 99)
             {
@@ -29,19 +28,12 @@ namespace NetTools
                 if (!isByte)
                     continue;
 
-                bool isCorrect;
                 switch (choice)
                 {
                     case 1:
-                        Console.Write("Ping IP address: ");
-                        IPAddress ipAddress; 
-                        isCorrect = IPAddress.TryParse(Console.ReadLine(), out ipAddress);
-                        if (isCorrect)
-                        {
-                            SendPing sp = new SendPing(ipAddress);
-                        }
-                        else
-                            Console.WriteLine("Invalid address");
+                        Console.Write("Hostname or IP address: ");
+                        string hostOrAddress = Console.ReadLine();
+                        SendPing sp = new SendPing(hostOrAddress);
                         break;
                 }
             }
