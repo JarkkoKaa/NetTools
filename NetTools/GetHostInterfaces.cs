@@ -4,6 +4,7 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
+using System.Linq;
 
 namespace NetTools
 {
@@ -34,9 +35,10 @@ namespace NetTools
                         if (ip.Address.AddressFamily == AddressFamily.InterNetworkV6)
                             Console.WriteLine($"IPv6 address: {ip.Address}");
                     }
-                    foreach (GatewayIPAddressInformation gw in ni.GetIPProperties().GatewayAddresses)
+                    var defaultGateway = ni.GetIPProperties().GatewayAddresses.FirstOrDefault(g => g.Address.AddressFamily.ToString() == "InterNetwork");
+                    if (defaultGateway != null)
                     {
-                        Console.WriteLine($"Default gateway: {gw.Address}");
+                        Console.WriteLine($"Default gateway: {defaultGateway.Address}");
                     }
                 }
                 else

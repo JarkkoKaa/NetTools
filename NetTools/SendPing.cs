@@ -41,9 +41,9 @@ namespace NetTools
                     $"Time to live: {reply.Options.Ttl}\n\n");
                     if (count == 2)
                     {
-                        Console.WriteLine("\n+++++++++++++++\n\n" +
+                        Console.WriteLine("+++++++++++++++\n" +
                         $"Don't fragment: {reply.Options.DontFragment}\n" +
-                        $"Bytes: {reply.Buffer.Length}\n");
+                        $"Bytes: {reply.Buffer.Length}\n\n");
                     }
                     count++;
                 } catch (Exception ex)
@@ -52,6 +52,11 @@ namespace NetTools
                     Console.WriteLine("Invalid address: "+hostOrAddress);
                     break;
                 }
+            }
+
+            if (pingSender != null)
+            {
+                pingSender.Dispose();
             }
         }
     }
