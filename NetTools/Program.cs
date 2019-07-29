@@ -14,7 +14,7 @@ namespace NetTools
                     "NET TOOLS\n" +
                     "+++++++++++++++\n" +
                     "Author: Jarkko Kaartinen - 2019\n\n" +
-                    $"Your machinename: {Environment.MachineName}\n");
+                    $"Local host name: {Dns.GetHostName()}\n");
 
             while (choice != 99)
             {

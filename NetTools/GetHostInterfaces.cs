@@ -38,8 +38,10 @@ namespace NetTools
                     var defaultGateway = ni.GetIPProperties().GatewayAddresses.FirstOrDefault(g => g.Address.AddressFamily.ToString() == "InterNetwork");
                     if (defaultGateway != null)
                     {
-                        Console.WriteLine($"Default gateway: {defaultGateway.Address}");
+                        Console.WriteLine($"Default gateway: {defaultGateway.Address}\n");
                     }
+                    if (ni.GetPhysicalAddress().GetAddressBytes().Length > 0)
+                        Console.WriteLine($"Physical address: {ni.GetPhysicalAddress().ToString()}");
                 }
                 else
                 {
