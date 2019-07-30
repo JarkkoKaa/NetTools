@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.NetworkInformation;
 using System.Linq;
+using NetTools.Helpers;
 
 namespace NetTools
 {
@@ -19,6 +20,7 @@ namespace NetTools
         /// <returns>IPAddress</returns>
         public void GetAll()
         {
+            FormatToEUI eui = new FormatToEUI();
             foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
             {
                 Console.WriteLine($"\n{ni.Name}\tType: {ni.NetworkInterfaceType}\nDescription:{ni.Description}\n");
@@ -41,7 +43,7 @@ namespace NetTools
                         Console.WriteLine($"Default gateway: {defaultGateway.Address}\n");
                     }
                     if (ni.GetPhysicalAddress().GetAddressBytes().Length > 0)
-                        Console.WriteLine($"Physical address: {ni.GetPhysicalAddress().ToString()}");
+                        Console.WriteLine($"Physical address: {eui.ToEUI48(ni.GetPhysicalAddress().ToString())}");
                 }
                 else
                 {
